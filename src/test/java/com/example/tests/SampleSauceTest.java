@@ -38,6 +38,17 @@ public class SampleSauceTest {
 		caps.setCapability("version", "43.0");
 
 		WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+		
+	    /**
+	     * Inserting new code for setting up RemoteWebDriver using ChromeOptions
+	     * Since usage of DesiredCapabilities in JAVA is deprecated hence ChromeOptions class can be used to
+	     * customize and configure a ChromeDriver session
+	     * NOTE: In Browser Version for Chrome use 75.0 or later as these are the supported Browser Version for W3C
+	     * 	ChromeOptions options = new ChromeOptions();
+             * 	options.setCapability(CapabilityType.PLATFORM_NAME, Platform.WIN8_1);
+             * 	options.setCapability(CapabilityType.BROWSER_VERSION, "75.0");
+             * 	WebDriver driver = new RemoteWebDriver(new URL(URL), options);
+	     */
 
 	    /**
 	     * Goes to Sauce Lab's guinea-pig page and prints title
