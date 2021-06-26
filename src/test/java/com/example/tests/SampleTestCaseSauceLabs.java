@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -36,20 +37,20 @@ public class SampleTestCaseSauceLabs {
 	/**
 	 * URL for Sauce Labs
 	 */
-	public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
+	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
 	
 	/**
      * Represents the browser to be used as part of the test run.
      */
-    protected String browser;
+    protected String browserName;
     /**
      * Represents the operating system to be used as part of the test run.
      */
-    protected String os;
+    protected String platformName;
     /**
      * Represents the version of the browser to be used as part of the test run.
      */
-    protected String version;
+    protected String browserVersion;
     /**
      * Instance variable which contains the Sauce Job Id.
      */
@@ -64,18 +65,16 @@ public class SampleTestCaseSauceLabs {
      * Constructs a new instance of the test.  The constructor requires three string parameters, which represent the operating
      * system, version and browser to be used when launching a Sauce VM.  The order of the parameters should be the same
      * as that of the elements within the {@link #browsersStrings()} method.
-     * @param os
-     * @param version
-     * @param browser
-     * @param deviceName
-     * @param deviceOrientation
+     * @param browserName
+     * @param browserVersion
+     * @param platformName
      */
 
-    public SampleTestCaseSauceLabs(String os, String version, String browser) {
+    public SampleTestCaseSauceLabs(String browserName, String browserVersion, String platformName) {
         super();
-        this.os = os;
-        this.version = version;
-        this.browser = browser;
+        this.browserName = browserName;
+        this.browserVersion = browserVersion;
+        this.platformName = platformName;
     }
 
     /**
@@ -86,32 +85,32 @@ public class SampleTestCaseSauceLabs {
     public static LinkedList<String[]> browsersStrings() {
         LinkedList<String[]> browsers = new LinkedList<String[]>();
 
-        // windows 7, IE 9
-        browsers.add(new String[]{"Windows 7", "9", "internet explorer"});
+        // mac OS Big Sur, Chrome Latest
+        browsers.add(new String[]{"chrome", "latest", "macOS 11"});
 
-        // windows 8, IE 10
-        browsers.add(new String[]{"Windows 8", "10", "internet explorer"});
+        // Windows 10, Firefox Latest
+        browsers.add(new String[]{"firefox", "latest", "Windows 10" });
 
         // windows 8.1, IE 11
-        browsers.add(new String[]{"Windows 8.1", "11", "internet explorer"});
+        browsers.add(new String[]{"internet explorer", "11", "Windows 8.1"});
 
         return browsers;
     }
 	
     /**
-     * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the {@link #browser},
-     * {@link #version} and {@link #os} instance variables, and which is configured to run against ondemand.saucelabs.com, using
-     * the username and access key populated by the {@link #authentication} instance.
+     * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the {@link #browserName},
+     * {@link #browserVersion} and {@link #platformName} instance variables, and which is configured to run against ondemand.saucelabs.com, using
+     * the username
      *
      * @throws Exception if an error occurs during the creation of the {@link RemoteWebDriver} instance.
      */
 	@Before
 	public void setUp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
-        capabilities.setCapability(CapabilityType.VERSION, version);
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, browserName);
+        capabilities.setCapability(CapabilityType.BROWSER_VERSION, browserVersion);
 
-        capabilities.setCapability(CapabilityType.PLATFORM, os);
+        capabilities.setCapability(CapabilityType.PLATFORM_NAME, platformName);
 		
 		driver = new RemoteWebDriver(new URL(URL), capabilities);
 		
