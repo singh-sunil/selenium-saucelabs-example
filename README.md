@@ -1,5 +1,5 @@
 # selenium-saucelabs-example
-Sample Selenium and Sauce Labs tests for the tutorial [Getting started with Selenium and Sauce Labs](http://tutorials.pluralsight.com/software-engineering-best-practices/getting-started-with-selenium-and-sauce-labs).
+Sample Selenium and Sauce Labs tests for the tutorial [Getting started with Selenium and Sauce Labs](https://www.pluralsight.com/guides/getting-started-with-selenium-and-sauce-labs).
 
 
 # Requirements
