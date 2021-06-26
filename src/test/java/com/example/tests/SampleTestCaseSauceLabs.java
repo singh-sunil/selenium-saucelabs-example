@@ -24,22 +24,22 @@ import com.saucelabs.junit.ConcurrentParameterized;
  */
 @RunWith(ConcurrentParameterized.class)
 public class SampleTestCaseSauceLabs {
-	/**
-	 * Your Sauce Labs username
-	 */
-	public static final String USERNAME = System.getenv("SAUCE_USERNAME");
-	
-	/**
-	 * Your Sauce Labs access key
-	 */
-	public static final String ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
-	
-	/**
-	 * URL for Sauce Labs
-	 */
-	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
-	
-	/**
+    /**
+     * Your Sauce Labs username
+     */
+    public static final String USERNAME = System.getenv("SAUCE_USERNAME");
+
+    /**
+     * Your Sauce Labs access key
+     */
+    public static final String ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
+
+    /**
+     * URL for Sauce Labs
+     */
+    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+
+    /**
      * Represents the browser to be used as part of the test run.
      */
     protected String browserName;
@@ -65,6 +65,7 @@ public class SampleTestCaseSauceLabs {
      * Constructs a new instance of the test.  The constructor requires three string parameters, which represent the operating
      * system, version and browser to be used when launching a Sauce VM.  The order of the parameters should be the same
      * as that of the elements within the {@link #browsersStrings()} method.
+     *
      * @param browserName
      * @param browserVersion
      * @param platformName
@@ -89,14 +90,14 @@ public class SampleTestCaseSauceLabs {
         browsers.add(new String[]{"chrome", "latest", "macOS 11"});
 
         // Windows 10, Firefox Latest
-        browsers.add(new String[]{"firefox", "latest", "Windows 10" });
+        browsers.add(new String[]{"firefox", "latest", "Windows 10"});
 
         // windows 8.1, IE 11
         browsers.add(new String[]{"internet explorer", "11", "Windows 8.1"});
 
         return browsers;
     }
-	
+
     /**
      * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the {@link #browserName},
      * {@link #browserVersion} and {@link #platformName} instance variables, and which is configured to run against ondemand.saucelabs.com, using
@@ -104,42 +105,41 @@ public class SampleTestCaseSauceLabs {
      *
      * @throws Exception if an error occurs during the creation of the {@link RemoteWebDriver} instance.
      */
-	@Before
-	public void setUp() throws Exception {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability(CapabilityType.BROWSER_NAME, browserName);
-        capabilities.setCapability(CapabilityType.BROWSER_VERSION, browserVersion);
-
+    @Before
+    public void setUp() throws Exception {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, browserName);
+        capabilities.setCapability(CapabilityType.VERSION, browserVersion);
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, platformName);
-		
-		driver = new RemoteWebDriver(new URL(URL), capabilities);
-		
-		this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
 
-		String message = String.format("SauceOnDemandSessionID=%1$s", this.sessionId);
-	    System.out.println(message);
-	}
-	
-	/**
+        driver = new RemoteWebDriver(new URL(URL), capabilities);
+
+        this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
+
+        String message = String.format("SauceOnDemandSessionID=%1$s", this.sessionId);
+        System.out.println(message);
+    }
+
+    /**
      * Runs a simple test using page objects
      */
-	@Test
-	public void testSampleTestCaseSauceLabs() {
-		LessonPage lessonPage = new LessonPage(driver, "emphasis");
-		ExercisePage exercisePage = lessonPage.getExercise();
-		
-		assertTrue(exercisePage.isShowAnswerBtnPresent());
-		
-		exercisePage.enterAnswer("The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.");
-		
-		assertTrue(exercisePage.isAnswerCorrect());
-	}
-	
-	/**
-	 * Closes the {@link WebDriver} instance
-	 */
-	@After
-	public void tearDown() throws Exception {
-		driver.quit();
-	}
+    @Test
+    public void testSampleTestCaseSauceLabs() {
+        LessonPage lessonPage = new LessonPage(driver, "emphasis");
+        ExercisePage exercisePage = lessonPage.getExercise();
+
+        assertTrue(exercisePage.isShowAnswerBtnPresent());
+
+        exercisePage.enterAnswer("The music video for Rihanna's song **American Oxygen** depicts various moments from American history, including the inauguration of Barack Obama.");
+
+        assertTrue(exercisePage.isAnswerCorrect());
+    }
+
+    /**
+     * Closes the {@link WebDriver} instance
+     */
+    @After
+    public void tearDown() throws Exception {
+        driver.quit();
+    }
 }
