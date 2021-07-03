@@ -1,15 +1,19 @@
-package com.example.tests;
+package com.example.webtests;
 
 import static org.junit.Assert.assertTrue;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.Platform;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -23,7 +27,7 @@ import com.saucelabs.junit.ConcurrentParameterized;
  * Demonstrates how to write a JUnit test that runs tests against Sauce Labs using multiple browsers in parallel.
  */
 @RunWith(ConcurrentParameterized.class)
-public class SampleTestCaseSauceLabs {
+public class _2SampleTestCaseW3CSauceLabs {
     /**
      * Your Sauce Labs username
      */
@@ -37,7 +41,7 @@ public class SampleTestCaseSauceLabs {
     /**
      * URL for Sauce Labs
      */
-    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
 
     /**
      * Represents the browser to be used as part of the test run.
@@ -71,7 +75,7 @@ public class SampleTestCaseSauceLabs {
      * @param platformName
      */
 
-    public SampleTestCaseSauceLabs(String browserName, String browserVersion, String platformName) {
+    public _2SampleTestCaseW3CSauceLabs(String browserName, String browserVersion, String platformName) {
         super();
         this.browserName = browserName;
         this.browserVersion = browserVersion;
@@ -107,9 +111,9 @@ public class SampleTestCaseSauceLabs {
      */
     @Before
     public void setUp() throws Exception {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+        MutableCapabilities capabilities = new MutableCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browserName);
-        capabilities.setCapability(CapabilityType.VERSION, browserVersion);
+        capabilities.setCapability(CapabilityType.BROWSER_VERSION, browserVersion);
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, platformName);
 
         driver = new RemoteWebDriver(new URL(URL), capabilities);

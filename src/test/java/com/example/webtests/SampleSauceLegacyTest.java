@@ -1,4 +1,4 @@
-package com.example.tests;
+package com.example.webtests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -11,21 +11,21 @@ import java.net.URL;
  * Sample test executed on Sauce Labs
  *
  */
-public class SampleSauceTest {
+public class SampleSauceLegacyTest {
 	/**
 	 * Your Sauce Labs username
 	 */
-	public static final String USERNAME = "oauth-sunilsingh4y06-109df";
+	public static final String USERNAME = "singhsunil3012";
 	
 	/**
 	 * Your Sauce Labs access key
 	 */
-	public static final String ACCESS_KEY = "7b413e9e-70cb-43a6-9755-c989815b78b3";
+	public static final String ACCESS_KEY = "2df60e08-1cd4-4b19-bce2-ecb80182f515";
 	
 	/**
 	 * URL for Sauce Labs
 	 */
-	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
 
 	/**
 	 * Execute a simple test on Sauce Labs
