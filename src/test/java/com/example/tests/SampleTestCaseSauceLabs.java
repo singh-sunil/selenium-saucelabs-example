@@ -109,7 +109,7 @@ public class SampleTestCaseSauceLabs {
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(CapabilityType.BROWSER_NAME, browserName);
-        capabilities.setCapability(CapabilityType.VERSION, browserVersion);
+        capabilities.setCapability(CapabilityType.BROWSER_VERSION, browserVersion);
         capabilities.setCapability(CapabilityType.PLATFORM_NAME, platformName);
 
         driver = new RemoteWebDriver(new URL(URL), capabilities);
