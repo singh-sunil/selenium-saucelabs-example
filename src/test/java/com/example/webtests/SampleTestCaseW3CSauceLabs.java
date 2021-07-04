@@ -1,5 +1,6 @@
 package com.example.webtests;
 
+import com.example.config.SauceConfig;
 import com.example.pages.ExercisePage;
 import com.example.pages.LessonPage;
 import com.saucelabs.junit.ConcurrentParameterized;
@@ -40,7 +41,7 @@ public class SampleTestCaseW3CSauceLabs {
     /**
      * URL for Sauce Labs
      */
-    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + SauceConfig.DATA_CENTER_US_WEST_PLUS_HUB_ENDPOINT;
 
     /**
      * Represents the browser to be used as part of the test run.

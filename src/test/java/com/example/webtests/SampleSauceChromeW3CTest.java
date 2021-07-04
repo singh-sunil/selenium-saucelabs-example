@@ -1,5 +1,6 @@
 package com.example.webtests;
 
+import com.example.config.SauceConfig;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
@@ -15,17 +16,17 @@ public class SampleSauceChromeW3CTest {
     /**
      * Your Sauce Labs username
      */
-    public static final String USERNAME = "singhsunil3012";
+    public static final String USERNAME = SauceConfig.USERNAME;
 
     /**
      * Your Sauce Labs access key
      */
-    public static final String ACCESS_KEY = "2df60e08-1cd4-4b19-bce2-ecb80182f515";
+    public static final String ACCESS_KEY = SauceConfig.ACCESS_KEY;
 
     /**
      * URL for Sauce Labs
      */
-    public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY +  "@ondemand.saucelabs.com:80/wd/hub";
+    public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY +  SauceConfig.NO_DATA_CENTER_PLUS_HUB_ENDPOINT;
 
     /**
      * Execute a simple test on Sauce Labs

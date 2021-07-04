@@ -1,5 +1,6 @@
 package com.example.webtests;
 
+import com.example.config.SauceConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -15,17 +16,17 @@ public class SampleSauceLegacyTest {
 	/**
 	 * Your Sauce Labs username
 	 */
-	public static final String USERNAME = "singhsunil3012";
+	public static final String USERNAME = SauceConfig.USERNAME;
 	
 	/**
 	 * Your Sauce Labs access key
 	 */
-	public static final String ACCESS_KEY = "2df60e08-1cd4-4b19-bce2-ecb80182f515";
+	public static final String ACCESS_KEY = SauceConfig.ACCESS_KEY;
 	
 	/**
 	 * URL for Sauce Labs
 	 */
-	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
+	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + SauceConfig.DATA_CENTER_US_WEST_PLUS_HUB_ENDPOINT;
 
 	/**
 	 * Execute a simple test on Sauce Labs

@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 
+import com.example.config.SauceConfig;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -41,7 +42,7 @@ public class _2SampleTestCaseW3CSauceLabs {
     /**
      * URL for Sauce Labs
      */
-    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
+    public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + SauceConfig.DATA_CENTER_US_WEST_PLUS_HUB_ENDPOINT;
 
     /**
      * Represents the browser to be used as part of the test run.
